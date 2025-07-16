@@ -27,7 +27,6 @@ services:
       KAFKA_SSL_KEYSTORE_FILENAME: 'server.keystore.jks'
       KAFKA_SSL_KEYSTORE_CREDENTIALS: 'keystore.password'
       KAFKA_SSL_KEY_CREDENTIALS: 'keystore.password'
-      KAFKA_SSL_KEY_PASSWORD: 'd1e3d1476afa0ee73239415e984000ce'
       KAFKA_SSL_TRUSTSTORE_FILENAME: 'server.truststore.jks'
       KAFKA_SSL_TRUSTSTORE_CREDENTIALS: 'keystore.password'
       KAFKA_SSL_CLIENT_AUTH: 'none'
@@ -56,8 +55,7 @@ services:
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
 
       KAFKA_HEAP_OPTS: "-Xmx256m -Xms256m"
-      KAFKA_JVM_PERFORMANCE_OPTS: "-server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport"
-
+      KAFKA_JVM_PERFORMANCE_OPTS: "-server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=45 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -XX:MaxDirectMemorySize=128m"
       KAFKA_BACKGROUND_THREADS: 2
 
     volumes:

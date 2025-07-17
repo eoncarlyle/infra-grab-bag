@@ -51,11 +51,16 @@ services:
       KAFKA_LOG_SEGMENT_BYTES: 1073741824
       KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS: 300000
 
+      KAFKA_LOG_FLUSH_INTERVAL_MESSAGES: 100
+      KAFKA_LOG_FLUSH_INTERVAL_MS: 100
+      KAFKA_LOG_FLUSH_SCHEDULER_INTERVAL_MS: 500
+
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
 
-      KAFKA_HEAP_OPTS: "-Xmx256m -Xms256m"
-      KAFKA_JVM_PERFORMANCE_OPTS: "-server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=45 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -XX:MaxDirectMemorySize=128m"
+      KAFKA_HEAP_OPTS: "-Xmx640m -Xms256m"
+      KAFKA_JVM_PERFORMANCE_OPTS: "-server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=45 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport"
+        #KAFKA_JVM_PERFORMANCE_OPTS: "-server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=45 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -XX:MaxDirectMemorySize=128m"
       KAFKA_BACKGROUND_THREADS: 2
 
     volumes:
@@ -67,7 +72,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 350M
+          memory: 768M
         reservations:
           memory: 256M
     healthcheck:
